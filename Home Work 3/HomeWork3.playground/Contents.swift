@@ -2,239 +2,251 @@ import UIKit
 
 // First task
 
-class animal{
+
+
+
+
+
+class Animal{
     var name: String = ""
-    var feetCount: UInt = 0  // как я понял это ноги
-    var wingsCount: UInt = 0    // количество крыльев
+    var feetCount: UInt = 0
+    var wingsCount: UInt = 0
     
-    func voice(voice: Bool){
-        
+    func voice(){}
+    func fly(){}
+
+}
+
+class Birds: Animal{
+    override init(){
+        super.init()
+        feetCount = 4
     }
-    func fly(fly: Bool){
-        
-    }
-    func getMilk()-> Bool{
-    return false
-    }
-    func getEgg ()-> Bool{
-        return false
+}
+
+class Mammals: Animal{
+    override init(){
+        super.init()
+        feetCount = 2
+        wingsCount = 2
     }
 }
 
 
-class cat: animal {
+class Cat: Mammals {
     
 }
-
-    var Cat = cat()
-    Cat.name = "Asy"
-    Cat.feetCount = 4
-    Cat.wingsCount = 0
-    Cat.fly(fly: false)
-    Cat.voice(voice: true)
+    var cat = Cat()
+    cat.name = "Asy"
 
 
-
-class dog: animal{
+class Dog: Mammals{
 
 }
-
-    var Dog = dog()
-    Dog.name = "Ponchik"
-    Dog.feetCount = 4
-    Dog.wingsCount = 0
-    Dog.fly(fly: false)
-    Dog.voice(voice: true)
+    var dog = Dog()
+    dog.name = "Ponchik"
 
 
+class Parrot: Birds {
 
-class parrot: animal {
-    override func getEgg() -> Bool {
-        true
-    }
+}
+    var parrot = Parrot()
+    parrot.name = "Kesha"
+
+
+class Cock: Birds{
+
+}
+    var cock = Cock()
+    cock.name = "Ruben"
+
+
+class Cow: Mammals {
+
+}
+    var cow = Cow()
+    cow.name = "Masha"
+
+
+func getMilk(getMilk: Cow){
 }
 
-    var Parrot = parrot()
-    Parrot.name = "Kesha"
-    Parrot.feetCount = 2
-    Parrot.wingsCount = 2
-    Parrot.fly(fly: true)
-    Parrot.voice(voice: true)
-
-
-class cock: animal{
-    override func getEgg() -> Bool {
-        true
-    }
+func getEgg(getEgg: Parrot){
 }
+// test function
+getEgg(getEgg: parrot)
+getMilk(getMilk: cow)
 
-    var Cock = cock()
-    Cock.name = "Ruben"
-    Cock.feetCount = 2
-    Cock.wingsCount = 2
-    Cock.fly(fly: false)
-    Cock.voice(voice: true)
+cat.fly()
+cat.voice()
+
+dog.fly()
+dog.voice()
+
+parrot.fly()
+parrot.voice()
+
+cock.fly()
+cock.voice()
+
+cow.fly()
+cow.voice()
 
 
-class cow: animal {
-    override func getMilk() -> Bool {
-        true
-    }
-}
 
-var Cow = cow()
 
-    Cow.name = "Masha"
-    Cow.feetCount = 4
-    Cow.wingsCount = 0
-    Cow.fly(fly: false)
-    Cow.voice(voice: true)
 
 
 
 // Seconf task
 
-enum TeamGame{
-    case Yes
-    case No
+
+class Athlete{
+    var nameSport: String
+    var activeSport: Bool
+    var teamSport: Bool
+    var yearsOfCreate: Int
+    var peopleOfTeam: Int
+    init(nameSport: String, activeSport: Bool, teamSport: Bool, yearsOfCreate: Int, PeaopleOfTeam: Int){
+        self.nameSport = nameSport
+        self.activeSport = activeSport
+        self.teamSport = teamSport
+        self.yearsOfCreate = yearsOfCreate
+        self.peopleOfTeam = PeaopleOfTeam
+    }
+    func theBestTeam(){}
+    func theBestMatchForChess(){}
+    func LostGame(){}
+    func winGame(){}
 }
 
-class sport{
-    var nameSport: String = ""
-    var athletes: [String] = [" "]
-    var activeSport: Bool = false
-    var equipment: String = ""
-    var yearOfCreation: Int = 0
-    
-    
-    func seasonSport(seasonSport: Bool){
-        
-    }
-    func teamGame(teamGame: TeamGame){
-    
-    }
-    func olympicSport(olympicSport: Bool){}
-
-    func startGame(team: [String], with equipment: String){
-        
-    }
-    
+enum Equipment: String{
+    case Ball = "Мяч"
+    case TennisEquipment = "Теннисный шар и ракетки"
+    case PingPongEquipment = "Шар для ПингПонга и ракетки"
+    case ChessEquipment = "Шахматы с доской"
+    case PockerEquipment = "Карты"
+    case FencingEquipment = "Шпаги"
 }
 
-class Basketball: sport{
-    override func startGame(team: [String], with equipment: String) {
-        print("Basketball game started with team: \(team) and equipment: \(equipment)")
+class Sport: Athlete{
+    var palyers: [Athlete]
+    init(players: [Athlete]){
+        self.palyers = players
     }
 }
 
+class Basketball: Sport{
+    override init(players: [Athlete]) {
+        ["Oleg","Danill","Vanya","Anton","Max","Vova","Kirill","Kostya","Dima","Petya"]
+    }
+}
 var basketball = Basketball()
-    basketball.nameSport = "Basketball"
-    basketball.athletes = ["Oleg","Danill","Vanya","Anton","Max","Vova","Kirill","Kostya","Dima","Petya"]
-    basketball.activeSport = true
-    basketball.equipment = "ball"
-    basketball.yearOfCreation = 1891
-    basketball.seasonSport(seasonSport: false)
-    basketball.teamGame(teamGame: .Yes)
-    basketball.olympicSport(olympicSport: true)
 
 
 
-class Football: sport {
-    override func startGame(team: [String], with equipment: String) {
-        print("Football game started with team: \(team) and equipment: \(equipment)")
-    }
+
+//    basketball.nameSport = "Basketball"
+//  //  basketball.athletes = ["Oleg","Danill","Vanya","Anton","Max","Vova","Kirill","Kostya","Dima","Petya"]
+//    basketball.activeSport = true
+//
+//    basketball.yearOfCreation = 1891
+
+
+
+
+
+
+
+
+
+class Football: Sport {
+
 }
 
 var football = Football()
     football.nameSport = "football"
-    football.athletes = ["Oleg","Danill","Vanya","Anton","Max","Vova","Kirill","Kostya","Dima","Petya","Slava"]
+  //  football.athletes = ["Oleg","Danill","Vanya","Anton","Max","Vova","Kirill","Kostya","Dima","Petya","Slava"]
     football.activeSport = true
-    football.equipment = "ball"
-    football.yearOfCreation = 1846
-    football.olympicSport(olympicSport: false)
-    football.teamGame(teamGame: .Yes)
-    football.olympicSport(olympicSport: true)
 
-class Tennis: sport{
+    football.yearOfCreation = 1846
+
+
+class Tennis: Sport{
     
 }
 var tennis = Tennis()
     tennis.nameSport = "tennis"
-    tennis.athletes = ["Alex"]
+ //   tennis.athletes = ["Alex"]
     tennis.activeSport = true
-    tennis.equipment = "Ball, racket"
+   // tennis.equipment = "Ball, racket"
     tennis.yearOfCreation = 1873
-    tennis.olympicSport(olympicSport: true)
-    tennis.teamGame(teamGame: .No)
-    tennis.olympicSport(olympicSport: true)
 
-class PingPong: sport{
+
+class PingPong: Sport{
     
 }
 
 var pingPong = PingPong()
     pingPong.nameSport = "ping pong"
-    pingPong.athletes = ["Ariana"]
+   // pingPong.athletes = ["Ariana"]
     pingPong.activeSport = true
-    pingPong.equipment = "board and figures, ball"
-    pingPong.yearOfCreation = 1891
-    pingPong.olympicSport(olympicSport: true)
-    pingPong.seasonSport(seasonSport: false)
-    pingPong.teamGame(teamGame: .No)
 
-class Volleyball: sport{
-    override func startGame(team: [String], with equipment: String) {
-        print("Volleyball game started with team: \(team) and equipment: \(equipment)")
-    }
+    pingPong.yearOfCreation = 1891
+
+
+class Volleyball: Sport{
+
 }
 var volleyball = Volleyball()
     volleyball.nameSport = "volleyball"
-    volleyball.athletes = ["Oleg","Danill","Vanya","Anton","Max","Vova"]
+ //   volleyball.athletes = ["Oleg","Danill","Vanya","Anton","Max","Vova"]
     volleyball.activeSport = true
-    volleyball.equipment = "ball"
-    volleyball.yearOfCreation = 1895
-    volleyball.olympicSport(olympicSport: true)
-    volleyball.seasonSport(seasonSport: false)
-    volleyball.teamGame(teamGame: .Yes)
 
-class Chess: sport{
+    volleyball.yearOfCreation = 1895
+
+
+class Chess: Sport{
     
 }
 
 var chess = Chess()
     chess.nameSport = "Chess"
-    chess.athletes = ["Kasparov"]
+ //   chess.athletes = ["Kasparov"]
     chess.activeSport = false
-    chess.equipment = "board and figures"
-    chess.yearOfCreation = 570
-    chess.olympicSport(olympicSport: false)
-    chess.seasonSport(seasonSport: false)
-    chess.teamGame(teamGame: .No)
 
-class Poker: sport{
+    chess.yearOfCreation = 570
+
+class Poker: Sport{
     
 }
 
 var poker = Poker()
     poker.nameSport = "poker"
-    poker.athletes = ["Emily"]
+  //  poker.athletes = ["Emily"]
     poker.activeSport = false
-    poker.equipment = "cards"
-    poker.yearOfCreation = 1829
-    poker.olympicSport(olympicSport: false)
-    poker.seasonSport(seasonSport: false)
-    poker.teamGame(teamGame: .No)
 
-class Fencing: sport{
+    poker.yearOfCreation = 1829
+
+
+class Fencing: Sport{
     
 }
 
 var fencing = Fencing()
     fencing.nameSport = "fencing"
-    fencing.athletes = ["Max"]
+  //  fencing.athletes = ["Max"]
     fencing.activeSport = true
-    fencing.equipment = "protective suit, sword"
+
     fencing.yearOfCreation = 1635
-    fencing.olympicSport(olympicSport: true)
-    fencing.seasonSport(seasonSport: false)
-    fencing.teamGame(teamGame: .No)
+
+
+
+
+
+
+
+
+func startGame(team: [Athlete], with: Equipment){
+    
+}
